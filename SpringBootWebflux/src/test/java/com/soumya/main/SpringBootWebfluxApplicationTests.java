@@ -1,6 +1,8 @@
 package com.soumya.main;
 
+import java.util.List;
 import java.util.UUID;
+import java.util.function.BiFunction;
 import java.util.function.Function;
 
 import org.junit.jupiter.api.Test;
@@ -56,9 +58,47 @@ class SpringBootWebfluxApplicationTests {
 			System.err.println(s);
 			
 			System.err.println("***************************");
-
 			
+			
+
 		});
+		
+		BiFunction<Employee, Integer, String> bIf = (e, nameLength) -> e.getName()+" : "+nameLength; 
+		
+        List<Employee> listOfEmployees = List.<Employee>of(
+        		
+													Employee.
+													builder().
+													id(UUID.randomUUID().toString()).
+													name("Soumyajit").
+													build(),
+													
+													Employee.
+													builder().
+													id(UUID.randomUUID().toString()).
+													name("Roshni").
+													build(),
+													
+													Employee.
+													builder().
+													id(UUID.randomUUID().toString()).
+													name("Akhil").
+													build()
+
+        		
+        										);	
+        
+        
+        
+           listOfEmployees.forEach(em -> {
+        	   
+        	   String result = bIf.apply(em, em.getName().length());
+        	   
+        	   System.err.println(result);
+        	   
+           
+           });
 	}
 
+	
 }
